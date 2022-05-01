@@ -1,0 +1,31 @@
+.banner {
+  position: relative;
+  background-image: url("https://img.freepik.com/free-photo/young-asian-businesswoman-manager-wearing-face-mask-warehouse-using-digital-tablet-checking-inventory_7861-2913.jpg?t=st=1651416667~exp=1651417267~hmac=c7cba22389156538e1e19c588efd8aaf753b557ee8ba9b8127bb0ef98705da63&w=1060");
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  padding-right: 373px;
+  padding-top: 195px;
+  opacity: 1;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* rgba(250, 37, 0, 0.884); */
+.cush {
+  font-weight: 800;
+  color: crimson;
+}
+
+@media only screen and (max-width: 600px) {
+  .cushea {
+    margin-top: 370px;
+  }
+  .banner {
+    padding: 0 0 250px;
+  }
+}
