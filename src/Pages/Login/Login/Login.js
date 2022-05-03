@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -9,55 +9,13 @@ import './Login.css';
 
 const Login = () => {
 
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    password: "",
-})
-const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-    general: "",
-})
+
 
   const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
 
 
-  const handleEmailChange = (e) => {
-    const emailRegex = /\S+@\S+\.\S+/;
-    const validEmail = emailRegex.test(e.target.value);
-    
-    if(validEmail){
-        setUserInfo({...userInfo, email: e.target.value}) 
-        setErrors({...errors, email: ""})      
-    } else {
-        setErrors({...errors, email: "Invalid email"})
-        setUserInfo({...userInfo, email: ""})
-    }
-  }
-
-  const handlePasswordChange = (e) => {
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    const validPassword = passwordRegex.test(e.target.value);
-    // console.log(validPassword)
-    
-    if(validPassword){
-        setUserInfo({...userInfo, password: e.target.value});
-        setErrors({...errors, password: ""});
-    } else {
-        setErrors({...errors, password: "Minimum eight characters, at least one letter, one number and one special character!"});
-        setUserInfo({...userInfo, password: ""})
-    }
-  }
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    // console.log(userInfo)
-
-    signInWithEmail(userInfo.email, userInfo.password);
-    
-}
+ 
 
 const navigate = useNavigate();
  const location = useLocation();
@@ -91,12 +49,20 @@ useEffect(() => {
   }
 }, [hookError, googleError])
 
-// const resetPassword= async (e)=>{
-//   const email= e.target.email.value;
-//   console.log(email)
-//   await sendPasswordResetEmail(email);
-//   toast('Sent email');
-// }
+
+
+const emailRef= useRef(' ');
+ const passwordRef=useRef(' ');
+
+ const handleLogin=(event)=>{
+  event.preventDefault();
+  const email= emailRef.current.value;
+  const password=passwordRef.current.value;
+  signInWithEmail(email, password)
+  console.log(email,password);
+ }
+
+
 
     return (
         <div className='container w-50 mx-auto '>
@@ -104,13 +70,13 @@ useEffect(() => {
         <h2>Please Login</h2>
      <div class="mb-3">
        <label for="exampleInputEmail1" class="form-label">Email address</label>
-       <input  type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleEmailChange}/>
+       <input  type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ref={emailRef}/>
        
        
      </div>
      <div class="mb-3">
        <label for="exampleInputPassword1" class="form-label">Password</label>
-       <input  type="password" class="form-control" id="exampleInputPassword1" onChange={handlePasswordChange}/>
+       <input  type="password" class="form-control" id="exampleInputPassword1" ref={passwordRef}/>
        
      </div>
     
@@ -121,7 +87,7 @@ useEffect(() => {
    <ToastContainer />
    
      <p>New to SmartPhone Inventory? <Link to="/register" className='text-primary pe-auto text-decoration-none' >Please Register</Link> </p>
-     <p>Forget Password? <Link to="/login" className='text-primary pe-auto text-decoration-none'  >Reset Password</Link> </p>
+     <p>Forget Password? <Link to="/resetpassword" className='text-primary pe-auto text-decoration-none'  >Reset Password</Link> </p>
    </div>
    
    <div className=''>
