@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AboutUs from './Pages/AboutUs/AboutUs';
@@ -15,11 +16,18 @@ import Myitems from './Pages/Myitems/Myitems';
 import NotFound from './Pages/Notfound/Notfound';
 
 function App() {
+
+  const [Reload, setReload] = useState(false);
+  const handleReload= ()=>{
+    setReload(!Reload)
+  }
+
+
   return (
     <div className="App">
        <Header></Header>
         <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/"  handleReload ={handleReload }  element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/about" element={<AboutUs></AboutUs>}></Route>
