@@ -11,7 +11,7 @@ const ManageInventoryDetails = ({mobile, handleReload}) => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            alert(' Delivered successfully!!!')
+            alert(' Delete successfully!!!')
             handleReload();
           });
       };
