@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AboutUs from './Pages/AboutUs/AboutUs';
@@ -14,20 +14,15 @@ import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
 import ManageItems from './Pages/ManageItems/ManageItems';
 import Myitems from './Pages/Myitems/Myitems';
 import NotFound from './Pages/Notfound/Notfound';
+import ServiceCardsDetails from './Pages/ServiceCardsDetails/ServiceCardsDetails';
 
 function App() {
-
-  const [Reload, setReload] = useState(false);
-  const handleReload= ()=>{
-    setReload(!Reload)
-  }
-
-
+  
   return (
     <div className="App">
        <Header></Header>
         <Routes>
-        <Route path="/"  handleReload ={handleReload }  element={<Home></Home>}></Route>
+        <Route path="/"   element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/about" element={<AboutUs></AboutUs>}></Route>
@@ -41,6 +36,8 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/resetpassword" element={<ResetPassword></ResetPassword>}></Route>
+        <Route path="/mobile/:mobileid" element={<ServiceCardsDetails></ServiceCardsDetails>}></Route>
+        
 
       <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>

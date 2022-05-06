@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ServiceCard.css';
 
 const ServiceCard = ({service, handleReload}) => {
+
+//   const navigateToServiceCardsDetails = service=>{
+//     navigate(`/servic`);
+// }
     return (
         <div>
             <div className="card" classNameName="cus">
@@ -15,10 +20,11 @@ const ServiceCard = ({service, handleReload}) => {
     <li className="list-group-item px-4 border-0 text-success fw-bold">Supplier Name: {service.supplierName}</li>
     <li className="list-group-item px-4 border-0 text-danger">Quantity: {service.quantity}</li>
   </ul>
-  <div className="card-body">
+  <div className="card-body ">
     {/* <a href="#" className="card-link">Card link</a>
     <a href="#" className="card-link">Another link</a> */}
-<button type="button" class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark">Update</button>
+    <Link   to={`/mobile/${service._id}`}  >
+<button type="button"   class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark"  >Manage</button></Link>
   </div>
 </div>
         </div>

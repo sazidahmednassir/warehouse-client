@@ -12,18 +12,19 @@ const Servicecards = ( ) => {
   useEffect(() => {
     fetch(`http://localhost:5000/mobile?limit=6`)
       .then((res) => res.json())
-      .then((data) => setServices(data));
+      .then((data) => {setServices(data)
+      setReload(!Reload)});
   }, [Reload]);
 
-  const handleReload= ()=>{
-    setReload(!Reload)
-  }
+  // const handleReload= ()=>{
+  //   setReload(!Reload)
+  // }
     return (
         <div>
           <div className="row row-cols-1 row-cols-md-3 g-4 m-2">
           {services.map((service) => (
           <ServiceCard
-            service={service}   handleReload ={handleReload }   
+            service={service}    
           />
         ))}
         </div>
