@@ -17,7 +17,7 @@ const ManageInventory = () => {
       setReload(!Reload)});
   }, [Reload]);
     return (
-        <div>
+        <div className="my-3">
          <table class="table">
   <thead>
      

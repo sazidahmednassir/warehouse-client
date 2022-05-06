@@ -37,18 +37,28 @@ const handleSignOut=()=>{
                         <li className="nav-item">
                             <Link className="nav-link text-dark" to="/about">About Us</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-dark" 
-                            to="/manageitems">Manage Items</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-dark" 
+                       
+                    
+                           { user?  <li className="nav-item">  <Link className="nav-link text-dark" 
+                            to="/manageinventory">Manage Inventory</Link>
+                        </li>: <li></li>
+
+                           }
+
+                    { user?  <li className="nav-item">  <Link className="nav-link text-dark" 
                             to="/additem">Add Item</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link text-dark" 
+                        </li>: <li></li>
+
+                           }
+
+                            { user?  <li className="nav-item">  <Link className="nav-link text-dark" 
                             to="/myitem">My items</Link>
-                        </li>
+                        </li>: <li></li>
+
+                           } 
+                          
+                        
+                     
                         <li className="nav-item">
                          { user? 
       <button className='btn btn-danger text-decoration-none' onClick={handleSignOut}>sign out</button>:   <Link className="nav-link text-dark" to="/login" >Login</Link>
