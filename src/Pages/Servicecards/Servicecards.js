@@ -3,7 +3,7 @@ import ServiceCard from '../ServiceCard/ServiceCard';
 import './Servicecards.css';
 
 const Servicecards = ( ) => {
-    const [services, setServices] = useState([]);
+    const [mobiles, setMobile] = useState([]);
     const [Reload, setReload] = useState(false);
    
   
@@ -12,9 +12,9 @@ const Servicecards = ( ) => {
   useEffect(() => {
     fetch(`http://localhost:5000/mobile?limit=6`)
       .then((res) => res.json())
-      .then((data) => {setServices(data)
+      .then((data) => {setMobile(data)
       setReload(!Reload)});
-  }, [Reload]);
+  }, [mobiles]);
 
   // const handleReload= ()=>{
   //   setReload(!Reload)
@@ -22,9 +22,9 @@ const Servicecards = ( ) => {
     return (
         <div>
           <div className="row row-cols-1 row-cols-md-3 g-4 m-2">
-          {services.map((service) => (
+          {mobiles.map((mobile) => (
           <ServiceCard
-            service={service}    
+            mobile={mobile}    
           />
         ))}
         </div>

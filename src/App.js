@@ -11,6 +11,7 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
+import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import ManageItems from './Pages/ManageItems/ManageItems';
 import Myitems from './Pages/Myitems/Myitems';
 import NotFound from './Pages/Notfound/Notfound';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/resetpassword" element={<ResetPassword></ResetPassword>}></Route>
         <Route path="/mobile/:mobileid" element={<ServiceCardsDetails></ServiceCardsDetails>}></Route>
+        <Route path="/manageinventory" element={<ManageInventory></ManageInventory>}></Route>
         
 
       <Route path="*" element={<NotFound></NotFound>}></Route>
