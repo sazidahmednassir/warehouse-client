@@ -75,15 +75,7 @@ const ServiceCardsDetails = () => {
     }, [googleUser]);
 
 
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
-  //  const from = location.state?.from?.pathname || "/manageinventory";
-  // const navigateMangeInventory=()=>{
-  //   if(googleUser || user){
-  //     navigate(from)
-  //   }
-   
-  // }
+
     return (
         <div  className=" my-4 mx-auto">
           <div className="d-flex flex-wrap justify-content-around">
