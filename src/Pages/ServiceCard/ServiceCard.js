@@ -25,6 +25,7 @@ const mobileCard = ({mobile}) => {
 <button type="button"   class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark"  >Manage</button></Link>
   </div>
 </div>
+
         </div>
     );
 };

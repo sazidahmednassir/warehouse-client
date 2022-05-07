@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useEffect, useState } from 'react';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useNavigate, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { auth } from '../../firebase.init';
 import './ServiceCardsDetails.css';
 
 
@@ -34,6 +37,15 @@ const ServiceCardsDetails = () => {
      });
     }
 
+    // const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
+    const [ googleUser] = useSignInWithGoogle(auth);
+    
+
+    
+
+
+ 
+
     const handleIncrement=(event)=>{
         event.preventDefault();
         const quantity= Number(mobile.quantity) + Number(event.target.quantity.value);
@@ -53,9 +65,29 @@ const ServiceCardsDetails = () => {
      });
 
     }
+
+    const navigate = useNavigate();
+    useEffect(() => {
+   
+      if ( googleUser) {
+          navigate("/manageinventory");
+      }
+    }, [googleUser]);
+
+
+  //   const navigate = useNavigate();
+  //   const location = useLocation();
+  //  const from = location.state?.from?.pathname || "/manageinventory";
+  // const navigateMangeInventory=()=>{
+  //   if(googleUser || user){
+  //     navigate(from)
+  //   }
+   
+  // }
     return (
-        <div  className="d-flex flex-wrap justify-content-around my-4 mx-auto">
-           <div className="card mb-3 w-50  " classNameName="cus">
+        <div  className=" my-4 mx-auto">
+          <div className="d-flex flex-wrap justify-content-around">
+          <div className="card mb-3 w-50  " classNameName="cus">
   <div className="row g-0">
     <div className="col-md-4">
       <img
@@ -85,12 +117,15 @@ const ServiceCardsDetails = () => {
   </div>
 
  
-  <button type="submit" class="btn btn-success">Add Quantity</button>
+  <button type="submit"  class="btn btn-success">Add Quantity</button>
 </form>
       </div>
     </div>
   </div>
 </div>
+          </div>
+    
+<div><Link to="/manageinventory"><button type="button"class="btn btn-dark btn-rounded my-3">Manage Inventories</button></Link></div>
  
 </div>
             

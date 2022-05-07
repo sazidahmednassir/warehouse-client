@@ -35,7 +35,7 @@ const ManageInventoryDetails = ({mobile, handleReload}) => {
       <td>${mobile.price}</td>
       <td>{mobile.supplierName}</td>
       <td>{mobile.quantity}</td>
-      <td><button type="button" onClick={ () => handleDelete(mobile._id)} class="btn btn-danger">Danger</button></td>
+      <td><button type="button" onClick={ () => handleDelete(mobile._id)} class="btn btn-danger">Delete</button></td>
     </tr>
 
    

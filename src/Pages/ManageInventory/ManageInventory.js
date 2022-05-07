@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ManageInventoryDetails from '../ManageInventoryDetails/ManageInventoryDetails';
 
 const ManageInventory = () => {
@@ -16,6 +17,15 @@ const ManageInventory = () => {
       .then((data) => {setMobile(data)
       setReload(!Reload)});
   }, [Reload]);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+ const from = location.state?.from?.pathname || "/additem";
+
+
+  const navigateAddnewitem=()=>{
+    navigate(from)
+  }
     return (
         <div className="my-3">
          <table class="table">
@@ -38,6 +48,7 @@ const ManageInventory = () => {
               ))}
     
     </table>
+    <div><button onClick={()=>navigateAddnewitem()} type="button" class="btn btn-dark btn-rounded my-3">Add New Item</button></div>
           
        
         </div>

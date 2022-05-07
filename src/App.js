@@ -12,7 +12,6 @@ import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
-import ManageItems from './Pages/ManageItems/ManageItems';
 import Myitems from './Pages/Myitems/Myitems';
 import NotFound from './Pages/Notfound/Notfound';
 import ServiceCardsDetails from './Pages/ServiceCardsDetails/ServiceCardsDetails';
@@ -27,18 +26,16 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/about" element={<AboutUs></AboutUs>}></Route>
-        <Route path="/manageitems" element={ 
-          <RequireAuth>
-        <ManageItems></ManageItems> 
-        </RequireAuth>
-        }></Route>
+       
         <Route path="/additem" element={<AddItem></AddItem>}></Route>
         <Route path="/myitem" element={<Myitems></Myitems>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/resetpassword" element={<ResetPassword></ResetPassword>}></Route>
         <Route path="/mobile/:mobileid" element={<ServiceCardsDetails></ServiceCardsDetails>}></Route>
-        <Route path="/manageinventory" element={<ManageInventory></ManageInventory>}></Route>
+        <Route path="/manageinventory" element={
+        <RequireAuth><ManageInventory></ManageInventory></RequireAuth>
+        }></Route>
         
 
       <Route path="*" element={<NotFound></NotFound>}></Route>
