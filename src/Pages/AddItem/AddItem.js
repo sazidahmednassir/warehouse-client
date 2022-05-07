@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddItem = () => {
+  const [isReload, setIsReload] = useState(false);
+
+const handleItemCreated=((event)=>{
+
+  event.preventDefault();
+  const name=event.target.name.value;
+  const des=event.target.des.value;
+  const price=event.target.price.value;
+  const supplierName=event.target.supplierName.value;
+  const image=event.target.image.value;
+  const quantity=event.target.quantity.value;
+
+  fetch("http://localhost:5000/createmobile", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+
+    body: JSON.stringify({ name, des,  price,  supplierName, image, quantity}),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      alert(' Item Added Successfully!!!')
+      setIsReload(!isReload);
+      event.target.reset();
+    });
+
+
+})
+
+
     return (
         <div className='container w-50 mx-auto my-3'>
-        <form >
+        <form  onSubmit={handleItemCreated}>
         <h2>Add New Item</h2>
      <div class="mb-3">
        <label for="name" class="form-label">Enter Product Name</label>
@@ -29,7 +61,7 @@ const AddItem = () => {
      </div>
      <div class="mb-3">
        <label for="image" class="form-label">Enter Product Images Url</label>
-       <input  type="text" name="supplierName" class="form-control" id="image" />
+       <input  type="text" name="image" class="form-control" id="image" />
        
      </div>
      <div class="mb-3">

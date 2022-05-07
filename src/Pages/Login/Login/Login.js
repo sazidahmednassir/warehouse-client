@@ -15,16 +15,21 @@ const Login = () => {
   const [signInWithGoogle, googleUser, loading2, googleError] = useSignInWithGoogle(auth);
 
 
- 
+  
 
 const navigate = useNavigate();
  const location = useLocation();
  const from = location.state?.from?.pathname || "/";
 
+
+// console.log(user.email);
+// console.log(googleUser.email)
  useEffect(() => {
    
   if (user || googleUser) {
-      navigate(from);
+    
+navigate(from);
+      
   }
 }, [user, googleUser]);
 
@@ -59,10 +64,58 @@ const emailRef= useRef(' ');
   const email= emailRef.current.value;
   const password=passwordRef.current.value;
   signInWithEmail(email, password)
+  console.log(user);
   console.log(email,password);
  }
 
+ if (user ) {
+  //  console.log()
+  //  console.log(googleUser?.user?.email)
+  const email=user?.user?.email
+  const url = 'http://localhost:5000/login';
 
+
+  fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+          email: email
+      }),
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      },
+  })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+          // localStorage.setItem("accessToken", data.token);
+          // navigate(from, { replace: true });
+      });
+
+ }
+
+ if (googleUser ) {
+  //  console.log(user?.user?.email)
+  //  console.log(googleUser?.user?.email)
+  const url = 'http://localhost:5000/login';
+
+
+  fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+          email: googleUser?.user?.email
+      }),
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      },
+  })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+          // localStorage.setItem("accessToken", data.token);
+          // navigate(from, { replace: true });
+      });
+
+ }
 
     return (
         <div className='container w-50 mx-auto '>
