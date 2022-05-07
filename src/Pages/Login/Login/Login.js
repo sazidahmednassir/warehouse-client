@@ -24,14 +24,14 @@ const navigate = useNavigate();
 
 // console.log(user.email);
 // console.log(googleUser.email)
- useEffect(() => {
+//  useEffect(() => {
    
-  if (user || googleUser) {
+//   if (user || googleUser) {
     
-navigate(from);
+// navigate(from);
       
-  }
-}, [user, googleUser]);
+//   }
+// }, [user, googleUser]);
 
 
 useEffect(() => {
@@ -87,8 +87,9 @@ const emailRef= useRef(' ');
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-          // localStorage.setItem("accessToken", data.token);
+          localStorage.setItem("accessToken", data.token);
           // navigate(from, { replace: true });
+          navigate(from);
       });
 
  }
@@ -111,8 +112,9 @@ const emailRef= useRef(' ');
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-          // localStorage.setItem("accessToken", data.token);
+          localStorage.setItem("accessToken", data.token);
           // navigate(from, { replace: true });
+          navigate(from);
       });
 
  }
