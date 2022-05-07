@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
 import { auth } from '../../firebase.init';
 
 const AddItem = () => {
@@ -17,12 +19,12 @@ const handleItemCreated=((event)=>{
   const supplierName=event.target.supplierName.value;
   const image=event.target.image.value;
   const quantity=event.target.quantity.value;
-  const  email=event.target.email.value;
+  const  email=user.email;
 
   fetch("http://localhost:5000/createmobile", {
     method: "POST",
     headers: {
-      'authorization':`${user.email} ${localStorage.getItem("accessToken")}`,
+      'authorization':`${user?.email} ${localStorage.getItem("accessToken")}`,
       "Content-type": "application/json",
     },
 
@@ -31,12 +33,13 @@ const handleItemCreated=((event)=>{
     .then((res) => res.json())
     .then((data) => {
       if(data.success === "UnAuthoraized Access"){
-        alert(' UnAuthoraized Access!!! ')
+        toast(data.success)
+        // alert(' UnAuthoraized Access!!! ')
         event.target.reset();
       }else{
         console.log(data);
-     
-        alert(' Item Added Successfully!!!')
+        toast(data.success)
+        // alert(' Item Added Successfully!!!')
         setIsReload(!isReload);
         event.target.reset();
       }
@@ -45,6 +48,11 @@ const handleItemCreated=((event)=>{
 
 
 })
+
+const navigate = useNavigate();
+if(!user){
+  navigate("/")
+}
 
 
     return (
@@ -57,7 +65,7 @@ const handleItemCreated=((event)=>{
         </div>
      <div class="mb-3">
        <label for="email" class="form-label">Enter Your Email</label>
-       <input  type="text" name="email"   class="form-control" id="email" aria-describedby="emailHelp"  />
+       <input  type="text" name="email"  value={user.email} class="form-control" id="email" aria-describedby="emailHelp"  required readOnly />
         </div>
 
      <div class="mb-3">
@@ -89,6 +97,7 @@ const handleItemCreated=((event)=>{
     
      <button type="submit" class="btn btn btn-danger">Add New Item</button>
    </form>
+   <ToastContainer></ToastContainer>
         </div>
     );
 };
