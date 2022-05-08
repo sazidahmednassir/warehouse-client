@@ -20,31 +20,54 @@ const handleItemCreated=((event)=>{
   const image=event.target.image.value;
   const quantity=event.target.quantity.value;
   const  email=user.email;
+  console.log(name.length)
 
-  fetch("https://thawing-mountain-31554.herokuapp.com/createmobile", {
-    method: "POST",
-    headers: {
-      'authorization':`${user?.email} ${localStorage.getItem("accessToken")}`,
-      "Content-type": "application/json",
-    },
+  if(name.length ===0 ){
+    return toast('Add Name ')
+  }
+  if(supplierName.length ===0 ){
+    return toast('Add Supplier Name ')
+  }
+  if(des.length ===0 ){
+    return toast('Add Description ')
+  }
+  if(image.length ===0 ){
+    return toast('Add Image  Url ')
+  }
 
-    body: JSON.stringify({ name, des,  price,  supplierName, image, quantity, email}),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if(data.success === "UnAuthoraized Access"){
-        toast(data.success)
-        // alert(' UnAuthoraized Access!!! ')
-        event.target.reset();
-      }else{
-        console.log(data);
-        toast(data.success)
-        // alert(' Item Added Successfully!!!')
-        setIsReload(!isReload);
-        event.target.reset();
-      }
-    
-    });
+  
+
+
+
+  if (price > 0 || quantity > 0 || price.length=== "undefined" || quantity.length=== "undefined" ) {
+    fetch("https://thawing-mountain-31554.herokuapp.com/createmobile", {
+     method: "POST",
+     headers: {
+       'authorization':`${user?.email} ${localStorage.getItem("accessToken")}`,
+       "Content-type": "application/json",
+     },
+ 
+     body: JSON.stringify({ name, des,  price,  supplierName, image, quantity, email}),
+   })
+     .then((res) => res.json())
+     .then((data) => {
+       if(data.success === "UnAuthoraized Access"){
+         toast(data.success)
+         // alert(' UnAuthoraized Access!!! ')
+         event.target.reset();
+       }else{
+         console.log(data);
+         toast(data.success)
+         // alert(' Item Added Successfully!!!')
+         setIsReload(!isReload);
+         event.target.reset();
+       }
+     
+     });
+  }else {
+             toast('Give Price and Quantity Positive Number')
+             event.target.reset();
+         }
 
 
 })
@@ -76,7 +99,7 @@ if(!user){
      </div>
      <div class="mb-3">
        <label for="price" class="form-label">Enter Product Price</label>
-       <input  type="text" name="price" class="form-control" id="price" />
+       <input  type="number" name="price" class="form-control" id="price" />
        
      </div>
      <div class="mb-3">
@@ -91,7 +114,7 @@ if(!user){
      </div>
      <div class="mb-3">
        <label for="quantity" class="form-label">Enter Product Quantity</label>
-       <input  type="text" name="quantity" class="form-control" id="quantity" />
+       <input  type="number" name="quantity" class="form-control" id="quantity" />
        
      </div>
     
