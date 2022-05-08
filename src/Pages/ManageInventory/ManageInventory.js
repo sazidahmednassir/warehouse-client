@@ -27,11 +27,13 @@ const ManageInventory = () => {
     navigate(from)
   }
     return (
-        <div className="my-3">
-         <table class="table">
+        <div className="container-fluid mt-5">
+            <div><button onClick={()=>navigateAddnewitem()} type="button" class="btn btn-dark btn-rounded my-3">Add New Item</button></div>
+          <div className="table-responsive">
+          <table className="table  table-bordered table-hover">
   <thead>
      
-    <tr>
+    <tr >
       <th scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Des</th>
@@ -48,7 +50,9 @@ const ManageInventory = () => {
               ))}
     
     </table>
-    <div><button onClick={()=>navigateAddnewitem()} type="button" class="btn btn-dark btn-rounded my-3">Add New Item</button></div>
+          </div>
+         
+  
           
        
         </div>

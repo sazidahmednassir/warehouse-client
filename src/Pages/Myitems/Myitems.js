@@ -34,8 +34,10 @@ const Myitems = () => {
       }
      
     return (
-        <div className="my-3">
-                  <table class="table">
+        <div className="container-fluid mt-5">
+
+<div className="table-responsive">      
+ <table class="table table-bordered table-hover">
   <thead>
      
     <tr>
@@ -54,7 +56,8 @@ const Myitems = () => {
                 />
               ))}
     
-    </table>
+    </table></div>
+           
   
         </div>
     );
