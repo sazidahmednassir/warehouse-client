@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Notfound.css';
 
 const Notfound = () => {
     return (
         <div>
               <div class="container mt-5">
-        <div class="row text-center">
+        <div class="row text-center ">
+         
           <div class="column-md-6 mt-5 pt-5">
           <p >
             Error 404
@@ -21,9 +23,9 @@ const Notfound = () => {
             Back to homepage
           </Link>
           </div>
-          <div class="column-md-6 mb-3">
-          <div >
-            <img class="cusim"
+          <div class="column-md-6 mb-3  w-50 mx-auto">
+          <div  className="d-flex justify-content-center">
+            <img class="cusim img-fluid"
               src='https://thumbs.dreamstime.com/b/%C3%B0%C2%BF%C3%B0%C2%B5%C3%B1%E2%80%A1%C3%B0%C2%B0%C3%B1%E2%80%9A%C3%B1%C5%93-134036857.jpg'
               alt=''
             />

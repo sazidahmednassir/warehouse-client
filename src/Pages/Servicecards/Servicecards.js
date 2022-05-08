@@ -27,14 +27,14 @@ const navigateMangeInventory=()=>{
 
     return (
         <div>
-          <div className="row row-cols-1 row-cols-md-3 g-4 m-2">
+          <div className="row row-cols-1 row-cols-md-3 g-4 m-2 ">
           {mobiles.map((mobile) => (
           <ServiceCard
             mobile={mobile}    
           />
         ))}
         </div>
-        <div><button onClick={()=>navigateMangeInventory()} type="button" class="btn btn-dark btn-rounded my-3">Manage Inventories</button></div>
+        <div><button onClick={()=>navigateMangeInventory()} type="button" class="btn btn-dark btn-rounded my-5">Manage Inventories</button></div>
         </div>
     );
 };

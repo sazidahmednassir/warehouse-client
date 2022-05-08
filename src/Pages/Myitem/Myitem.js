@@ -26,16 +26,16 @@ const Myitem = ({item, handleReload}) => {
     <tr>
       
       <td><img
-        src={item.image}
+        src={item?.image}
         alt="Trendy Pants and Shoes"
-        className="img-fluid rounded-start"
+        className="img-fluid rounded-start w-50"
       /></td>
-      <td>{item.name}</td>
-      <td>{item.des}</td>
-      <td>${item.price}</td>
-      <td>{item.supplierName}</td>
-      <td>{item.quantity}</td>
-      <td><button type="button"  onClick={ () => handleDelete(item._id)} class="btn btn-danger">Delete</button></td>
+      <td>{item?.name}</td>
+      <td>{item?.des}</td>
+      <td>${item?.price}</td>
+      <td>{item?.supplierName}</td>
+      <td>{item?.quantity}</td>
+      <td><button type="button"  onClick={ () => handleDelete(item?._id)} class="btn btn-danger">Delete</button></td>
     </tr>
 
    

@@ -54,7 +54,7 @@ const Register = () => {
             setUserInfo({ ...userInfo, password: e.target.value });
             setErrors({ ...errors, password: "" });
         } else {
-            setErrors({ ...errors, password: "Minimum 6 characters!" });
+            setErrors({ ...errors, password: "Minimum eight characters, at least one letter, one number and one special character!" });
             setUserInfo({ ...userInfo, password: "" });
         }
     };
@@ -73,6 +73,7 @@ const Register = () => {
         e.preventDefault();
         console.log(userInfo);
         createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+        
     };
 
     useEffect(() => {
@@ -100,6 +101,58 @@ const Register = () => {
             navigate(from);
         }
     }, [user]);
+
+
+    if (user ) {
+        //  console.log()
+        //  console.log(googleUser?.user?.email)
+        const email=user?.user?.email
+        const url = 'http://localhost:5000/register';
+      
+      
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+                localStorage.setItem("accessToken", data.token);
+                // navigate(from, { replace: true });
+                navigate(from);
+            });
+      
+       }
+      
+       if (googleUser ) {
+        //  console.log(user?.user?.email)
+        //  console.log(googleUser?.user?.email)
+        const url = 'http://localhost:5000/register';
+      
+      
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: googleUser?.user?.email
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+                localStorage.setItem("accessToken", data.token);
+                // navigate(from, { replace: true });
+                navigate(from);
+            });
+      
+       }
  
     return (
         <div className="container w-50 mx-auto">

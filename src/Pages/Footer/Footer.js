@@ -4,7 +4,7 @@ const Footer = () => {
     const today = new Date();
     const year = today.getFullYear();
     return (
-        <di className='container'>
+        <di className='container '>
                
                <footer class="bg-light text-center text-lg-start">
 

@@ -19,8 +19,14 @@ const Myitems = () => {
         })
         .then(res => res.json())
         .then(data => {setItemList(data)
-        console.log(data)})
+        console.log(data)
+       
+        })
       },[user?.email, Reload])
+
+     
+
+  
 
       const handleReload = ()=>{
         setReload(!Reload)
@@ -33,6 +39,7 @@ const Myitems = () => {
         navigate(from);
       }
      
+   
     return (
         <div className="container-fluid mt-5">
 
@@ -50,7 +57,7 @@ const Myitems = () => {
       <th scope="col">Action</th>
       </tr>
       </thead>
-      {items.map((item) => (
+      {items?.map((item) => (
                 <Myitem
                   item={item}    handleReload={handleReload}
                 />

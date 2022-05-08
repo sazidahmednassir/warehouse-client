@@ -102,6 +102,7 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
           <div className="card mb-3 w-50  " classNameName="cus">
   <div className="row g-0">
     <div className="col-md-4">
+     
       <img
         src={mobile.image}
         alt="Trendy Pants and Shoes"
