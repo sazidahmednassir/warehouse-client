@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ServiceCard.css';
 
-const mobileCard = ({mobile}) => {
+const ServiceCard = ({mobile}) => {
 
 
     return (
@@ -21,7 +21,7 @@ const mobileCard = ({mobile}) => {
   <div className="card-body ">
     {/* <a href="#" className="card-link">Card link</a>
     <a href="#" className="card-link">Another link</a> */}
-    <Link   to={`/mobile/${mobile._id}`}  >
+    <Link    to={`/mobile/${mobile._id}`}  >
 <button type="button"   class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark"  >Manage</button></Link>
   </div>
 </div>
@@ -30,4 +30,4 @@ const mobileCard = ({mobile}) => {
     );
 };
 
-export default mobileCard;
+export default ServiceCard;

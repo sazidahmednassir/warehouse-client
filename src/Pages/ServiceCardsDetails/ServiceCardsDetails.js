@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { auth } from '../../firebase.init';
+import { toast, ToastContainer } from 'react-toastify';
 import './ServiceCardsDetails.css';
 
 
-const ServiceCardsDetails = () => {
+const ServiceCardsDetails = ({setReload, Reload}) => {
     const {mobileid} = useParams();
     // const [mobile] = MobileDetails(mobileid);
     const [mobile, setMobile] = useState({});
     const [control, setControl]=useState(false);
+    const [agree, setAgree]=useState(true)
+
     useEffect( () =>{
         const url = `http://localhost:5000/mobile/${mobileid}`;
         console.log(url);
@@ -19,9 +20,13 @@ const ServiceCardsDetails = () => {
         .then(data => setMobile(data));
 
     }, [control]);
+
     
     const handledrement=()=>{
         const quantity= Number(mobile.quantity) - 1;
+     
+      
+     
         fetch(`http://localhost:5000/mobile/${mobileid}`, {
     method: "PUT",
     headers: {
@@ -33,12 +38,18 @@ const ServiceCardsDetails = () => {
     .then((data) =>  { 
         console.log('success', data);   
     alert(' Delivered successfully!!!');
-    setControl(!control)
+    if(quantity==0){
+      setControl(!control)
+      setAgree(!agree)
+      
+      return toast(' Stock out & Add Stock');
+    }
+ setControl(!control) 
      });
     }
 
     // const [signInWithEmail, user, loading, hookError] = useSignInWithEmailAndPassword(auth);
-    const [ googleUser] = useSignInWithGoogle(auth);
+    // const [ googleUser] = useSignInWithGoogle(auth);
     
 
     
@@ -48,7 +59,14 @@ const ServiceCardsDetails = () => {
 
     const handleIncrement=(event)=>{
         event.preventDefault();
-        const quantity= Number(mobile.quantity) + Number(event.target.quantity.value);
+        
+        const inputQuantity=Number(event.target.quantity.value);
+        // console.log(inputQuantity.length)
+        if (inputQuantity<=0 || inputQuantity.length=== "undefined"){
+          event.target.reset();
+          return toast('Dont add negative number & add positive number!!!')
+        }
+        const quantity= Number(mobile.quantity) + inputQuantity;
         fetch(`http://localhost:5000/mobile/${mobileid}`, {
     method: "PUT",
     headers: {
@@ -60,21 +78,23 @@ const ServiceCardsDetails = () => {
     .then((data) =>  { 
         console.log('success', data);   
     alert(' Quantity Added successfully!!!');
+   
     setControl(!control)
+    setAgree(!agree)
     event.target.reset();
      });
 
     }
 
-    const navigate = useNavigate();
-    useEffect(() => {
+    // const navigate = useNavigate();
+    // useEffect(() => {
    
-      if ( googleUser) {
-          navigate("/manageinventory");
-      }
-    }, [googleUser]);
+    //   if ( googleUser) {
+    //       navigate("/manageinventory");
+    //   }
+    // }, [googleUser]);
 
-
+   
 
     return (
         <div  className=" my-4 mx-auto">
@@ -100,7 +120,7 @@ const ServiceCardsDetails = () => {
         </p>
         <p className="card-text text-danger">Quantity:  {mobile.quantity}
         </p>
-        <button type="button"  onClick={handledrement} class="btn btn-outline-danger btn-rounded mb-3" data-mdb-ripple-color="dark"  >Delivered</button>
+        <button type="button" disabled={!agree} onClick={handledrement} class="btn btn-outline-danger btn-rounded mb-3" data-mdb-ripple-color="dark"  >Delivered</button>
         <form onSubmit={handleIncrement}>
   <div class="form-group mb-3">
     <label for="addquantity " className="mb-3">Add Quantity</label>
@@ -118,6 +138,7 @@ const ServiceCardsDetails = () => {
           </div>
     
 <div><Link to="/manageinventory"><button type="button"class="btn btn-dark btn-rounded my-3">Manage Inventories</button></Link></div>
+<ToastContainer></ToastContainer>
  
 </div>
             
