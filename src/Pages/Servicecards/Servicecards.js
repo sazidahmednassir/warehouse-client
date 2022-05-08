@@ -11,7 +11,7 @@ const Servicecards = ( ) => {
     
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mobile?limit=6`)
+    fetch(`https://thawing-mountain-31554.herokuapp.com/mobile?limit=6`)
       .then((res) => res.json())
       .then((data) => {setMobile(data)
       setReload(!Reload)});

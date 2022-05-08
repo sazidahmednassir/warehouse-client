@@ -21,7 +21,7 @@ const handleItemCreated=((event)=>{
   const quantity=event.target.quantity.value;
   const  email=user.email;
 
-  fetch("http://localhost:5000/createmobile", {
+  fetch("https://thawing-mountain-31554.herokuapp.com/createmobile", {
     method: "POST",
     headers: {
       'authorization':`${user?.email} ${localStorage.getItem("accessToken")}`,

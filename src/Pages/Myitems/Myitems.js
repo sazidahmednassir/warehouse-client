@@ -11,7 +11,7 @@ const Myitems = () => {
     
 
     useEffect(() => {
-        const url = `http://localhost:5000/myitem`;
+        const url = `https://thawing-mountain-31554.herokuapp.com/myitem`;
         fetch(url, {
           headers: {
             'authorization': `${user?.email} ${localStorage.getItem("accessToken")}`,
@@ -39,10 +39,16 @@ const Myitems = () => {
         navigate(from);
       }
      
+    
+    
+    
+      const navigateAddnewitem=()=>{
+        navigate("/additem")
+      }
    
     return (
         <div className="container-fluid mt-5">
-
+<div><button onClick={()=>navigateAddnewitem()} type="button" class="btn btn-dark btn-rounded my-3">Add New Item</button></div>
 <div className="table-responsive">      
  <table class="table table-bordered table-hover">
   <thead>

@@ -5,7 +5,7 @@ const ManageInventoryDetails = ({mobile, handleReload}) => {
     const handleDelete = (id) => {
         console.log(id);
       
-        fetch(`http://localhost:5000/mobile/${id}`, {
+        fetch(`https://thawing-mountain-31554.herokuapp.com/mobile/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

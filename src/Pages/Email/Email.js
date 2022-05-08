@@ -4,7 +4,7 @@ import './Email.css';
 const Email = () => {
     return (
         <div >
-             <div className="h-50 " 
+             <div className="h-50 my-5" 
             class="container panda-bg-info d-flex justify-content-center align-items-center rounded-3 ">
             <div >
                 <h1>LET'S STAY IN TOUCH</h1>

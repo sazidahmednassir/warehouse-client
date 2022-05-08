@@ -34,6 +34,9 @@ const handleSignOut=()=>{
                         <li className="nav-item">
                             <Link className="nav-link text-dark" to="/blog">Blog</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-dark" to="/contact">Contact us</Link>
+                        </li>
                         
                        
                         

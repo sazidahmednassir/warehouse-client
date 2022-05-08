@@ -13,7 +13,7 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
     const [agree, setAgree]=useState(true)
 
     useEffect( () =>{
-        const url = `http://localhost:5000/mobile/${mobileid}`;
+        const url = `https://thawing-mountain-31554.herokuapp.com/mobile/${mobileid}`;
         console.log(url);
         fetch(url)
         .then(res=> res.json())
@@ -27,7 +27,7 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
      
       
      
-        fetch(`http://localhost:5000/mobile/${mobileid}`, {
+        fetch(`https://thawing-mountain-31554.herokuapp.com/mobile/${mobileid}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
           return toast('Dont add negative number & add positive number!!!')
         }
         const quantity= Number(mobile.quantity) + inputQuantity;
-        fetch(`http://localhost:5000/mobile/${mobileid}`, {
+        fetch(`https://thawing-mountain-31554.herokuapp.com/mobile/${mobileid}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

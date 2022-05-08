@@ -12,7 +12,7 @@ const ManageInventory = () => {
     
 
   useEffect(() => {
-    fetch("http://localhost:5000/mobile")
+    fetch("https://thawing-mountain-31554.herokuapp.com/mobile")
       .then((res) => res.json())
       .then((data) => {setMobile(data)
       setReload(!Reload)});

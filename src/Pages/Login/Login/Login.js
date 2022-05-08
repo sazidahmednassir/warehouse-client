@@ -72,7 +72,7 @@ const emailRef= useRef(' ');
   //  console.log()
   //  console.log(googleUser?.user?.email)
   const email=user?.user?.email
-  const url = 'http://localhost:5000/login';
+  const url = 'https://thawing-mountain-31554.herokuapp.com/login';
 
 
   fetch(url, {
@@ -97,7 +97,7 @@ const emailRef= useRef(' ');
  if (googleUser ) {
   //  console.log(user?.user?.email)
   //  console.log(googleUser?.user?.email)
-  const url = 'http://localhost:5000/login';
+  const url = 'https://thawing-mountain-31554.herokuapp.com/login';
 
 
   fetch(url, {

@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddItem from './Pages/AddItem/AddItem';
 import Blog from './Pages/Blog/Blog';
+import Email from './Pages/Email/Email';
 import Footer from './Pages/Footer/Footer';
 import Header from './Pages/Header/Header';
 import Home from './Pages/Home/Home';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/"   element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
+        <Route path="/contact" element={<Email></Email>}></Route>
      <Route path="/additem" element={<AddItem></AddItem>}></Route>
         <Route path="/myitem" element={<Myitems></Myitems>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
