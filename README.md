@@ -19,8 +19,8 @@ Live Website Link: https://smartphoneinventory.web.app/
 - For Authentication like Log in, Sign Up, I used firebase
 - Also used react firebase hooks & react router dom hooks for make work easy
 - Also Used react toaster for to show popup to the user
-  -I used JWT for user verification and also user access to my item
-  -For Backened I used Nodejs
-  -For database I used Mongodb
-  -For Server site server I used Heroku
-  -For Client site server I used firebase
+- I used JWT for user verification and also user access to my item
+- For Backened I used Nodejs
+- For database I used Mongodb
+- For Server site server I used Heroku
+- For Client site server I used firebase
