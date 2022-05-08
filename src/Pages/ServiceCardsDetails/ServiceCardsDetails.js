@@ -37,7 +37,7 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
     .then((res) => res.json())
     .then((data) =>  { 
         console.log('success', data);   
-    alert(' Delivered successfully!!!');
+        toast(' Delivered successfully!!!');
     if(quantity==0){
       setControl(!control)
       setAgree(!agree)
@@ -60,6 +60,7 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
     const handleIncrement=(event)=>{
         event.preventDefault();
         
+        const newQuantity= Number(mobile.quantity)
         const inputQuantity=Number(event.target.quantity.value);
         // console.log(inputQuantity.length)
         if (inputQuantity<=0 || inputQuantity.length=== "undefined"){
@@ -77,10 +78,16 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
     .then((res) => res.json())
     .then((data) =>  { 
         console.log('success', data);   
-    alert(' Quantity Added successfully!!!');
-   
+    toast(' Quantity Added successfully!!!');
+    if(newQuantity==0){
+      setControl(!control)
+      setAgree(!agree)
+      
+      event.target.reset();
+    }
+    
     setControl(!control)
-    setAgree(!agree)
+    
     event.target.reset();
      });
 
