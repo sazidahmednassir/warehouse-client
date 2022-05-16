@@ -31,7 +31,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/resetpassword" element={<ResetPassword></ResetPassword>}></Route>
-        <Route path="/mobile/:mobileid" element={<ServiceCardsDetails></ServiceCardsDetails>}></Route>
+        <Route path="/mobile/:mobileid" element={<RequireAuth><ServiceCardsDetails></ServiceCardsDetails></RequireAuth>}></Route>
         <Route path="/manageinventory" element={
         <RequireAuth><ManageInventory></ManageInventory></RequireAuth>
         }></Route>
