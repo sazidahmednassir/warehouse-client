@@ -126,9 +126,9 @@ const ServiceCardsDetails = ({setReload, Reload}) => {
         </p>
         <p className="card-text text-success fw-bold">Supplier Name:   {mobile.supplierName}
         </p>
-        <p className="card-text text-danger">Quantity:  {mobile.quantity}
+        <p   className="card-text text-danger">Quantity:  {mobile.quantity}
         </p>
-        <button type="button" disabled={!agree} onClick={handledrement} class="btn btn-outline-danger btn-rounded mb-3" data-mdb-ripple-color="dark"  >Delivered</button>
+        <button type="button" disabled={!agree} onClick={handledrement}  class="btn btn-outline-danger btn-rounded mb-3" data-mdb-ripple-color="dark"  >Delivered</button>
         <form onSubmit={handleIncrement}>
   <div class="form-group mb-3">
     <label for="addquantity " className="mb-3">Add Quantity</label>
